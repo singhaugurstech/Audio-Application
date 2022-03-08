@@ -31,7 +31,7 @@ class BookController extends Controller
     public function create()
     {
         $category = Category::all();
-        return view('book.add')->with('categoryes',$category);
+        return view('book.create')->with('categoryes',$category);
     }
 
     /**
@@ -95,7 +95,7 @@ class BookController extends Controller
     {
         $book = Book::where('id',$id)->first();
         $category = Category::all();
-        return view('book.create')->with('book',$book)
+        return view('book.edit')->with('book',$book)
                                   ->with('categoryes',$category);
     }
 

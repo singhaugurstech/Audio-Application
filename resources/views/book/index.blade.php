@@ -42,7 +42,7 @@
                         <td>{{$book->category_id->name}}</td>
                         <td>{{$book->summary}}</td>
                         <td>{{$book->description}}</td>
-                        <td><img src='<?php echo asset("document/books/{$book->cover_page}"); ?>' height="50px" width="100px"></td>
+                        <td><img src='<?php echo asset("document/book_cover/{$book->cover_page}"); ?>' height="50px" width="100px"></td>
                         <td><img src='<?php echo asset("document/books/{$book->file}"); ?>' height="50px" width="100px"></td>
                         <td>
                             <button class="btn btn-info edit"><a href="book/edit/<?php echo $book->id; ?>"><i class='far fa-edit edit'></i></a></button>

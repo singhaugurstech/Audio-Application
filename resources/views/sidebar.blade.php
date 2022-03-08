@@ -11,11 +11,13 @@
 				</li>
                 <li class="sidebar-item active">
                     <a class="sidebar-link" href="{{url('home')}}">
-                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span></a>
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+					</a>
                 </li>
                 <li class="sidebar-item">
 				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('/books/')}}">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Books</span></a>
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Books</span>
+					</a>
                          <div class="dropdown-menu">
                                     <a href="{{url('books')}}" class="dropdown-item">Book</a>
                                     <a href="{{url('book/create')}}" class="dropdown-item">Create Book</a>
@@ -23,10 +25,20 @@
                 </li>
 				<li class="sidebar-item">
 				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('/category/')}}">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span></a>
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
+					</a>
                          <div class="dropdown-menu">
                                     <a href="{{url('category')}}" class="dropdown-item">Category</a>
                                     <a href="{{url('category/create')}}" class="dropdown-item">Create Category</a>
+                          </div>               
+                </li>
+				<li class="sidebar-item">
+				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('/about/')}}">
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">About Page</span>
+					</a>
+                         <div class="dropdown-menu">
+                                    <a href="{{url('about')}}" class="dropdown-item">About</a>
+                                    <a href="{{url('about/create')}}" class="dropdown-item">Create About Content</a>
                           </div>               
                 </li>
 				<li class="sidebar-item">
