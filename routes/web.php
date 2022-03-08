@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UI\BookController;
 use App\Http\Controllers\UI\CategoryController;
 use App\Http\Controllers\UI\UserController;
+use App\Http\Controllers\UI\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('category/edit/{id}',[CategoryController::class,'edit']);
     Route::post('category/update',[CategoryController::class,'update']);
     Route::get('category/destroy/{id}',[CategoryController::class,'destroy']);
+
+
+    Route::get('about',[AboutController::class,'index']);
+    Route::get('about/create',[AboutController::class,'create']);
+    Route::post('about/store',[AboutController::class,'store']);
+    Route::get('about/edit/{id}',[AboutController::class,'edit']);
+    Route::post('about/update',[AboutController::class,'update']);
+    Route::get('about/destroy/{id}',[AboutController::class,'destroy']);
+
 
     Route::get('users',[UserController::class,'index']);
 

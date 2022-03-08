@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add Category</h1>
-            <a class="badge bg-danger text-white ms-2"  href="{{ url('category/create')}}">
-               Click here to add Category 
+            <h1 class="h3 d-inline align-middle">Add About</h1>
+            <a class="badge bg-danger text-white ms-2"  href="{{ url('about/create')}}">
+               Click here to add About 
             </a>
         </div>
         <div class="card">
@@ -28,26 +28,29 @@
                 <thead>
                     <tr>
                         <th>Seriol</th>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @php $i = 1 @endphp;
-                @if (count($categoryes) > 0) 
-                    @foreach($categoryes as $category)
-                        <tr>
-                            <td>{{$i++}}.</td>
-                            <td>{{$category->name}}</td>
-                            <td>
-                                <button class="btn btn-info edit"><a href="category/edit/<?php echo $category->id; ?>"><i class='far fa-edit edit'></i></a></button>
-                                <button class="btn btn-danger delete"><a href="category/destroy/<?php echo $category->id; ?>" onclick="return confirm('Are you sure you want to delete?')"><i class='fas fa-trash-alt delete'></i></a></button>
-                            </td>
-                        </tr>
-                    @endforeach
+                @php $i = 1 @endphp; 
+                @if (count($abouts) > 0) 
+                @foreach($abouts as $about)
+                    <tr>
+                        <td>{{$i++}}.</td>
+                        <td>{{$about->title}}</td>
+                        <td>{{$about->description}}</td>
+                        <td>
+                            <button class="btn btn-info edit"><a href="about/edit/<?php echo $about->id; ?>"><i class='far fa-edit edit'></i></a></button>
+                            <button class="btn btn-danger delete"><a href="about/destroy/<?php echo $about->id; ?>" onclick="return confirm('Are you sure you want to delete?')"><i class='fas fa-trash-alt delete'></i></a></button>
+                        </td>
+                    </tr>
+                @endforeach
+
                 @else
-                         <tr>
-                            <td colspan="3"><center><b>No Data Found</b></center></td>
+                        <tr>
+                            <td colspan="4"><center><b>No Data Found</b></center></td>
                         </tr>
                 @endif
                 </tbody>

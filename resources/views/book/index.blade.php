@@ -34,22 +34,28 @@
                 </thead>
                 <tbody>
                 @php $i = 1 @endphp; 
-                @foreach($books as $book)
-                    <tr>
-                        <td>{{$i++}}.</td>
-                        <td>{{$book->title}}</td>
-                        <td>{{$book->author}}</td>
-                        <td>{{$book->category_id->name}}</td>
-                        <td>{{$book->summary}}</td>
-                        <td>{{$book->description}}</td>
-                        <td><img src='<?php echo asset("document/book_cover/{$book->cover_page}"); ?>' height="50px" width="100px"></td>
-                        <td><img src='<?php echo asset("document/books/{$book->file}"); ?>' height="50px" width="100px"></td>
-                        <td>
-                            <button class="btn btn-info edit"><a href="book/edit/<?php echo $book->id; ?>"><i class='far fa-edit edit'></i></a></button>
-                            <button class="btn btn-danger delete"><a href="book/destroy/<?php echo $book->id; ?>"><i class='fas fa-trash-alt delete'></i></a></button>
-                        </td>
-                    </tr>
-                @endforeach
+                @if (count($books) > 0) 
+                    @foreach($books as $book)
+                        <tr>
+                            <td>{{$i++}}.</td>
+                            <td>{{$book->title}}</td>
+                            <td>{{$book->author}}</td>
+                            <td>{{$book->category_id->name}}</td>
+                            <td>{{$book->summary}}</td>
+                            <td>{{$book->description}}</td>
+                            <td><img src='<?php echo asset("document/book_cover/{$book->cover_page}"); ?>' height="50px" width="100px"></td>
+                            <td><img src='<?php echo asset("document/books/{$book->file}"); ?>' height="50px" width="100px"></td>
+                            <td>
+                                <button class="btn btn-info edit"><a href="book/edit/<?php echo $book->id; ?>"><i class='far fa-edit edit'></i></a></button>
+                                <button class="btn btn-danger delete"><a href="book/destroy/<?php echo $book->id; ?>" onclick="return confirm('Are you sure you want to delete?')"><i class='fas fa-trash-alt delete'></i></a></button>
+                            </td>
+                        </tr>
+                    @endforeach
+                    @else
+                         <tr>
+                            <td colspan="9"><center><b>No Data Found</b></center></td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>

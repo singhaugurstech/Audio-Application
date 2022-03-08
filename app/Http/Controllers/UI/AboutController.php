@@ -4,14 +4,14 @@ namespace App\Http\Controllers\UI;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Book;
-class CategoryController extends Controller
+use App\Models\About;
+
+class AboutController extends Controller
 {
     public function index()
     {
-        $category = Category::all();
-        return view('Category/index')->with('categoryes',$category);
+        $about = About::all();
+        return view('about/index')->with('abouts',$about);
     }
 
     /**
@@ -22,7 +22,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        return view('category.create');
+        return view('about.create');
     }
 
     /**
@@ -34,12 +34,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category' => 'required|unique:categories,name',
+            'title' => 'required',
+            'description' => 'required',
         ]);
 
-        $book= new Category();
-        $book->name= $request['category'];
-        $book->save();
+        $about= new About();
+        $about->title= $request['title'];
+        $about->description= $request['description'];
+        $about->save();
 
         return back()
             ->with('success','You have successfully upload.');
@@ -65,8 +67,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::where('id',$id)->first();
-        return view('category.edit')->with('category',$category);
+        $about = About::where('id',$id)->first();
+        return view('about.edit')->with('about',$about);
     }
 
     /**
@@ -79,15 +81,17 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'category' => 'required|unique:categories,name',
+            'title' => 'required',
+            'description' => 'required',
         ]);
 
         $data = array(
-            'name' => $request['category'],
+            'title' => $request['title'],
+            'description' => $request['description']
         );
 
-        $category=Category::where('id',$request['edit_id'])->update($data);
-        if($category == 1){
+        $about = About::where('id',$request['edit_id'])->update($data);
+        if($about == 1){
             return back()
             ->with('success','You have successfully upload.');
         }else{
@@ -106,19 +110,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $book = Book::where('category_id',$id)->count();
-        if($book > 0){
+        $query = About::where('id',$id)->delete();
+        if($query == 1){
             return back()
-            ->with('error','This category have attach with Book.');
+            ->with('success','You have successfully upload.');
         }else{
-            $query = category::where('id',$id)->delete();
-            if($query == 1){
-                return back()
-                ->with('success','You have successfully upload.');
-            }else{
-                return back()
-                ->with('error','You have some error.');
-            }
+            return back()
+            ->with('error','You have some error.');
         }
     }
 }
