@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add Category</h1>
+            <h1 class="h3 d-inline align-middle">{{__('category/create.category')}}</h1>
             <a class="badge bg-danger text-white ms-2"  href="{{ url('category')}}">
-               Click here to view all Category
+                {{__('category/create.add_button')}}
 
             </a>
         </div>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Category Name</h5>
+                    <h5 class="card-title mb-0">{{__('category/create.name')}}</h5>
 				</div>
                 <div class="card-body">
                     <input type="text" name="category" class="form-control @error('category') is-invalid @enderror" value="{{$category->name}}">
@@ -36,7 +36,7 @@
             </div> 
             <div class="col-12 col-lg-12">
                <div class="card-body">
-                 <button type="submit" class="btn btn-info">Edit Category</button>
+                 <button type="submit" class="btn btn-info">{{__('category/create.category')}}</button>
                </div>
             </div>
         </form>

@@ -126,6 +126,20 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Language</label>
+                                        <select id="language" type="text"  class="form-control form-control-lg" name="language" required>
+                                            <option value=" ">Select Any One</option>
+                                            <option value="en">English</option>
+                                            <option value="arab">Arabic</option>
+                                            <option value="kur">kurdish</option>
+                                        </select>
+                                        @error('language')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <div class="text-center mt-3">
 											<button class="btn btn-lg btn-primary">Sign up</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->

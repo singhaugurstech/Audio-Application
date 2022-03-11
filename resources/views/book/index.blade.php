@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add Books</h1>
-            <a class="badge bg-danger text-white ms-2"  href="{{ url('book/create')}}">
-               Click here to add Book
+            <h1 class="h3 d-inline align-middle">{{__('book/index.book')}}</h1>
+            <a class="btn btn-success text-white ms-2"  href="{{ url('book/create')}}">
+               {{__('book/index.add_button')}}
             </a>
         </div>
         <div class="card">
@@ -16,20 +16,20 @@
                         <!-- <button type="button" class="close" data-dismiss="alert">×</button> -->
                             <strong>{{ $message }}</strong>
                     </div>
-                @endif
+            @endif
             </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Seriol</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Category</th>
-                        <th>Book Summary</th>
-                        <th>Book Description</th>
-                        <th>Cover Page</th>
-                        <th>Document</th>
-                        <th>Action</th>
+                        <th>{{__('book/index.seriol')}}</th>
+                        <th>{{__('book/index.title')}}</th>
+                        <th>{{__('book/index.author')}}</th>
+                        <th>{{__('book/index.category')}}</th>
+                        <th>{{__('book/index.book_summary')}}</th>
+                        <th>{{__('book/index.book_description')}}</th>
+                        <th>{{__('book/index.cover_page')}}</th>
+                        <th>{{__('book/index.document')}}</th>
+                        <th>{{__('book/index.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,7 @@
                     @endforeach
                     @else
                          <tr>
-                            <td colspan="9"><center><b>No Data Found</b></center></td>
+                            <td colspan="9"><center><b>{{__('book/index.no_data')}}</b></center></td>
                         </tr>
                     @endif
                 </tbody>

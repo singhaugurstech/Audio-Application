@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add User</h1>
+            <h1 class="h3 d-inline align-middle">{{__('user/index.user')}}</h1>
             <a class="badge bg-danger text-white ms-2"  href="#">
-               Click here to add User
+               {{__('user/index.add_button')}}
             </a>
         </div>
         <div class="card">
@@ -21,11 +21,11 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Seriol</th>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Action</th>
+                        <th>{{__('user/index.seriol')}}</th>
+                        <th>{{__('user/index.user_name')}}</th>
+                        <th>{{__('user/index.email')}}</th>
+                        <th>{{__('user/index.password')}}</th>
+                        <th>{{__('user/index.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>

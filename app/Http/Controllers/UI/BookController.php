@@ -6,16 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Support\Facades\Session;
+use App;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function getLocalLanguage(){
+
+        $user = auth()->user();
+        $locale = $user->language;
+        Session::put('locale', $locale);
+        app()->setLocale(Session::get('locale'));
+    }
+
     public function index()
     {
+
+        $this->getLocalLanguage();
         $books = Book::all();
         foreach($books as $book){
             $book->category_id = Category::select('name')->where('id',$book->category_id)->first();
@@ -30,6 +38,7 @@ class BookController extends Controller
      */
     public function create()
     {
+        $this->getLocalLanguage();
         $category = Category::all();
         return view('book.create')->with('categoryes',$category);
     }
@@ -42,6 +51,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $this->getLocalLanguage();
         $validated = $request->validate([
             'title' => 'required|max:255',
             'author' => 'required',
@@ -93,6 +104,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
+        $this->getLocalLanguage();
         $book = Book::where('id',$id)->first();
         $category = Category::all();
         return view('book.edit')->with('book',$book)
@@ -108,6 +120,7 @@ class BookController extends Controller
      */
     public function update(Request $request)
     {
+        $this->getLocalLanguage();
         $validated = $request->validate([
             'title' => 'required|max:255',
             'author' => 'required',
@@ -155,6 +168,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
+        $this->getLocalLanguage();
         $query = Book::where('id',$id)->delete();
         if($query == 1){
             return back()

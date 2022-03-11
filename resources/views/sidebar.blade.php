@@ -3,47 +3,44 @@
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
             <a class="sidebar-brand" href="index.html">
-                <span class="align-middle">Audio</span>
+                <span class="align-middle">{{__('sidebar.logo')}}</span>
             </a>
             <ul class="sidebar-nav">
                 <li class="sidebar-header">
-                    Pages
+				{{__('sidebar.pages')}}
 				</li>
                 <li class="sidebar-item active">
                     <a class="sidebar-link" href="{{url('home')}}">
-                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">{{__('sidebar.dashboard')}}</span>
 					</a>
                 </li>
                 <li class="sidebar-item">
-				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('/books/')}}">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Books</span>
+                    <a class="sidebar-link" href="{{url('books')}}">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">{{__('sidebar.books')}}</span>
 					</a>
-                         <div class="dropdown-menu">
-                                    <a href="{{url('books')}}" class="dropdown-item">Book</a>
-                                    <a href="{{url('book/create')}}" class="dropdown-item">Create Book</a>
-                          </div>               
                 </li>
 				<li class="sidebar-item">
-				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('/category/')}}">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
+                    <a class="sidebar-link" href="{{url('category')}}">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">{{__('sidebar.category')}}</span>
 					</a>
-                         <div class="dropdown-menu">
-                                    <a href="{{url('category')}}" class="dropdown-item">Category</a>
-                                    <a href="{{url('category/create')}}" class="dropdown-item">Create Category</a>
-                          </div>               
                 </li>
 				<li class="sidebar-item">
-				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('/about/')}}">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">About Page</span>
+				    <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">{{__('sidebar.content management')}}</span>
 					</a>
                          <div class="dropdown-menu">
-                                    <a href="{{url('about')}}" class="dropdown-item">About</a>
-                                    <a href="{{url('about/create')}}" class="dropdown-item">Create About Content</a>
+                                    <a href="{{url('about')}}" class="dropdown-item">{{__('sidebar.about content')}}</a>
+                                    <a href="{{url('contact')}}" class="dropdown-item">{{__('sidebar.contact content')}}</a>
                           </div>               
                 </li>
 				<li class="sidebar-item">
 				    <a class="sidebar-link" href="{{url('/users')}}"> 
-					 <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">User</span>
+					 <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">{{__('sidebar.user')}}</span>
+                    </a>
+                </li>
+				<li class="sidebar-item">
+				    <a class="sidebar-link" href="{{url('/advertisement')}}"> 
+					 <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">{{__('sidebar.advertisement')}}</span>
                     </a>
                 </li>
             </ul>
@@ -66,22 +63,14 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
 								<div class="dropdown-menu-header">
-									4 New Notifications
+								    {{__('sidebar.notification')}}
 								</div>
 							</div>
 						</li>
-						<li class="nav-item dropdown"><a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown" ><span class="welcome">Welcome {{ Auth::user()->name }}</span></a></li>
-				
-						
-							
-
+						<li class="nav-item dropdown"><a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown" ><span class="welcome">{{__('sidebar.welcome')}} {{ Auth::user()->name }}</span></a></li>
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown"></a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
+								<a class="dropdown-item" href="{{url('profile')}}"><i class="align-middle me-1" data-feather="user"></i> {{__('sidebar.profile')}}</a>
 								<div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

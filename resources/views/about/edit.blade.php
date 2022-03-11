@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add About</h1>
+            <h1 class="h3 d-inline align-middle">{{__('about/create.about')}}</h1>
             <a class="badge bg-danger text-white ms-2"  href="{{ url('about')}}">
-               Click here to view all Category
+                 {{__('about/create.add_button')}}
 
             </a>
         </div>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Title</h5>
+                    <h5 class="card-title mb-0">{{__('about/create.title')}}</h5>
 				</div>
                 <div class="card-body">
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{$about->title}}">
@@ -36,7 +36,7 @@
             </div>
             <div class="col-12 col-lg-8">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Description</h5>
+                    <h5 class="card-title mb-0">{{__('about/create.description')}}</h5>
 				</div>
                 <div class="card-body">
                     <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" placeholder="Enter Description">{{$about->description}}</textarea>
@@ -47,7 +47,7 @@
             </div> 
             <div class="col-12 col-lg-12">
                <div class="card-body">
-                 <button type="submit" class="btn btn-info">Edit About</button>
+                 <button type="submit" class="btn btn-info">{{__('about/create.about')}}</button>
                </div>
             </div>
         </form>

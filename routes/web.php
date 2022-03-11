@@ -5,6 +5,8 @@ use App\Http\Controllers\UI\BookController;
 use App\Http\Controllers\UI\CategoryController;
 use App\Http\Controllers\UI\UserController;
 use App\Http\Controllers\UI\AboutController;
+use App\Http\Controllers\UI\ContactController;
+use App\Http\Controllers\UI\AdvertisementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +51,24 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('about/update',[AboutController::class,'update']);
     Route::get('about/destroy/{id}',[AboutController::class,'destroy']);
 
+    Route::get('contact',[ContactController::class,'index']);
+    Route::get('contact/create',[ContactController::class,'create']);
+    Route::post('contact/store',[ContactController::class,'store']);
+    Route::get('contact/edit/{id}',[ContactController::class,'edit']);
+    Route::post('contact/update',[ContactController::class,'update']);
+    Route::get('contact/destroy/{id}',[ContactController::class,'destroy']);
+
+    Route::get('advertisement',[AdvertisementController::class,'index']);
+    Route::get('advertisement/create',[AdvertisementController::class,'create']);
+    Route::post('advertisement/store',[AdvertisementController::class,'store']);
+    Route::get('advertisement/edit/{id}',[AdvertisementController::class,'edit']);
+    Route::post('advertisement/update',[AdvertisementController::class,'update']);
+    Route::get('advertisement/destroy/{id}',[AdvertisementController::class,'destroy']);
+
 
     Route::get('users',[UserController::class,'index']);
+    Route::get('profile',[UserController::class,'profile']);
+    Route::post('edit_profile',[UserController::class,'editProfile']);
 
 });
 

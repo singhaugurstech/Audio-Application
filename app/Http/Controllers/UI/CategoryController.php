@@ -6,10 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Book;
+use Illuminate\Support\Facades\Session;
+use App;
+
 class CategoryController extends Controller
 {
+
+    public function getLocalLanguage(){
+
+        $user = auth()->user();
+        $locale = $user->language;
+        Session::put('locale', $locale);
+        app()->setLocale(Session::get('locale'));
+    }
+
     public function index()
     {
+        $this->getLocalLanguage();
         $category = Category::all();
         return view('Category/index')->with('categoryes',$category);
     }
@@ -21,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
+        $this->getLocalLanguage();
         return view('category.create');
     }
 
@@ -33,6 +46,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->getLocalLanguage();
         $validated = $request->validate([
             'category' => 'required|unique:categories,name',
         ]);
@@ -65,6 +79,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $this->getLocalLanguage();
         $category = Category::where('id',$id)->first();
         return view('category.edit')->with('category',$category);
     }
@@ -78,6 +93,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
+        $this->getLocalLanguage();
         $validated = $request->validate([
             'category' => 'required|unique:categories,name',
         ]);
@@ -106,6 +122,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $this->getLocalLanguage();
         $book = Book::where('category_id',$id)->count();
         if($book > 0){
             return back()

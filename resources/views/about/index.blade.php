@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add About</h1>
-            <a class="badge bg-danger text-white ms-2"  href="{{ url('about/create')}}">
-               Click here to add About 
+            <h1 class="h3 d-inline align-middle">{{__('about/index.about')}}</h1>
+            <a class="btn btn-danger text-white ms-2"  href="{{ url('about/create')}}">
+                {{__('about/index.add_button')}}
             </a>
         </div>
         <div class="card">
@@ -27,10 +27,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Seriol</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Action</th>
+                        <th>{{__('about/index.seriol')}}</th>
+                        <th>{{__('about/index.title')}}</th>
+                        <th>{{__('about/index.description')}}</th>
+                        <th>{{__('about/index.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +50,7 @@
 
                 @else
                         <tr>
-                            <td colspan="4"><center><b>No Data Found</b></center></td>
+                            <td colspan="4"><center><b>{{__('about/index.no_data')}}</b></center></td>
                         </tr>
                 @endif
                 </tbody>

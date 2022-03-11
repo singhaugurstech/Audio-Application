@@ -5,17 +5,18 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Support\Facades\Session;
+use App;
+
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function getLocalLanguage(){
+
+        $user = auth()->user();
+        $locale = $user->language;
+        Session::put('locale', $locale);
+        app()->setLocale(Session::get('locale'));
     }
 
     /**
@@ -25,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
+        $this->getLocalLanguage();
         $users = User::count();
         $books = Book::count();
         $category = Category::count();

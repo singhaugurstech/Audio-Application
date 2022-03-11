@@ -5,11 +5,24 @@ namespace App\Http\Controllers\UI;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\About;
+use Illuminate\Support\Facades\Session;
+use App;
 
 class AboutController extends Controller
 {
+
+    public function getLocalLanguage(){
+
+        $user = auth()->user();
+        $locale = $user->language;
+        Session::put('locale', $locale);
+        app()->setLocale(Session::get('locale'));
+    }
+
+
     public function index()
     {
+        $this->getLocalLanguage();
         $about = About::all();
         return view('about/index')->with('abouts',$about);
     }
@@ -21,7 +34,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-
+        $this->getLocalLanguage();
         return view('about.create');
     }
 
@@ -33,6 +46,7 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
+        $this->getLocalLanguage();
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -67,6 +81,7 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
+        $this->getLocalLanguage();
         $about = About::where('id',$id)->first();
         return view('about.edit')->with('about',$about);
     }
@@ -80,6 +95,7 @@ class AboutController extends Controller
      */
     public function update(Request $request)
     {
+        $this->getLocalLanguage();
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -110,6 +126,7 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
+        $this->getLocalLanguage();
         $query = About::where('id',$id)->delete();
         if($query == 1){
             return back()

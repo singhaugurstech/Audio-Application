@@ -4,9 +4,9 @@
 <main class="content">
    <div class="container-fluid p-0">
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Add Category</h1>
-            <a class="badge bg-danger text-white ms-2"  href="{{ url('category/create')}}">
-               Click here to add Category 
+            <h1 class="h3 d-inline align-middle">{{__('category/index.category')}}</h1>
+            <a class="btn btn-info text-white ms-2"  href="{{ url('category/create')}}">
+               {{__('category/index.add_button')}}
             </a>
         </div>
         <div class="card">
@@ -27,9 +27,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Seriol</th>
-                        <th>Name</th>
-                        <th>Action</th>
+                        <th>{{__('category/index.seriol')}}</th>
+                        <th>{{__('category/index.name')}}</th>
+                        <th>{{__('category/index.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                     @endforeach
                 @else
                          <tr>
-                            <td colspan="3"><center><b>No Data Found</b></center></td>
+                            <td colspan="3"><center><b>{{__('category/index.no_data')}}</b></center></td>
                         </tr>
                 @endif
                 </tbody>
